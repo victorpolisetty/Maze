@@ -85,9 +85,7 @@ function MazeComponent({ sizePx, graph, label, edit }) {
   const [cellNum, setCellNum] = useState(null);
   const [mouseType, setMouseType] = useState(null);
   //stack coloring
-  useEffect(() => {
-    console.log(graph);
-  }, [graph.adjStack]);
+  useEffect(() => {}, [graph.adjStack]);
   useEffect(() => {
     setCellNumPast(null);
     setCellNum(null);
