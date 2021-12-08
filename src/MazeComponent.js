@@ -61,12 +61,13 @@ function connect(graph, cellNumPast, cellNum, mouseType) {
     }
     //Remove Edges
     if (mouseType === 2) {
+      console.log(cellNum, cellNumPast);
       //Remove from edge list
       graph.edgeList = graph.edgeList.filter(
-        (x) => x[0] !== cellNum && x[1] !== cellNumPast
+        (x) => x[0] !== cellNum || x[1] !== cellNumPast
       );
       graph.edgeList = graph.edgeList.filter(
-        (x) => x[0] !== cellNumPast && x[1] !== cellNum
+        (x) => x[0] !== cellNumPast || x[1] !== cellNum
       );
       //Remove from adjacency list
       graph.adjList[cellNumPast] = graph.adjList[cellNumPast].filter(
