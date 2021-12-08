@@ -1,3 +1,38 @@
+/*
+
+vector<int> dijkstra(const Graph& graph, int src) {
+    priority_queue<pair<int, int>> queue;
+    vector<int> distances(graph.numVertices, INT_MAX);
+    
+    for (int i = 0; i < graph.numVertices; i++) {
+        if (distances[i] == INT_MAX) {
+            queue.push({i, 0});
+            distances[i] = 0;
+            while(!queue.empty()) {
+                int vertex = queue.top().second;
+                queue.pop();
+
+                //relaxation
+                for (auto edge : graph.adjList[vertex]) {
+                    int newDistance = distances[edge.first];
+                    if (distances[vertex] + edge.second < newDistance) {
+                        distances[edge.first] = distances[vertex] + edge.second;
+                        queue.push({newDistance, edge.first});
+                    }
+                }
+            }
+        }
+    }
+
+    vector<int> result;
+    for (int i = 0; i < graph.numVertices; i++)
+        result.push_back(distances[i]);
+    
+    return result;
+}
+
+*/
+
 function bfsAdjList(graph, setGraph) {
   function clear() {
     setGraph({
@@ -111,15 +146,15 @@ function bfsEdgeList(graph, setGraph) {
 }
 
 export default function bfs(graph, setGraph) {
-  var startTimeAdj = performance.now();
+  //var startTimeAdj = performance.now();
   bfsAdjList(graph, setGraph);
-  var endTimeAdj = performance.now();
+  // var endTimeAdj = performance.now();
 
-  var startTimeEdge = performance.now();
-  bfsEdgeList(graph, setGraph);
-  var endTimeEdge = performance.now();
+  // var startTimeEdge = performance.now();
+  // bfsEdgeList(graph, setGraph);
+  // var endTimeEdge = performance.now();
 
-  console.log(
-    "MS: " + [endTimeAdj - startTimeAdj, endTimeEdge - startTimeEdge]
-  );
+  // console.log(
+  //   "MS: " + [endTimeAdj - startTimeAdj, endTimeEdge - startTimeEdge]
+  // );
 }
