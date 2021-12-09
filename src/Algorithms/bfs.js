@@ -122,6 +122,7 @@ export default function bfs(graph, setGraph) {
   setGraph({
     ...graph,
     bfsAdjTime: endTimeAdj - startTimeAdj,
-    bfsEdgeTime: endTimeEdge - startTimeEdge
+    bfsEdgeTime: endTimeEdge - startTimeEdge,
+    bfsLength: graph.adjStack[0].length
   });
 }

@@ -120,17 +120,18 @@ function dijkstraEdgeList(graph, setGraph) {
 }
 
 export default function dijkstra(graph, setGraph) {
-  var startTimeAdj = performance.now();
+  let startTimeAdj = performance.now();
   dijkstraAdjList(graph, setGraph);
-  var endTimeAdj = performance.now();
+  let endTimeAdj = performance.now();
 
-  var startTimeEdge = performance.now();
+  let startTimeEdge = performance.now();
   dijkstraEdgeList(graph, setGraph);
-  var endTimeEdge = performance.now();
+  let endTimeEdge = performance.now();
 
   setGraph({
     ...graph,
     dijkstraAdjTime: endTimeAdj - startTimeAdj,
-    dijkstraEdgeTime: endTimeEdge - startTimeEdge
+    dijkstraEdgeTime: endTimeEdge - startTimeEdge,
+    dijkstraLength: graph.adjStack[0].length
   });
 }

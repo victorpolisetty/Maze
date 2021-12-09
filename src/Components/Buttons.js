@@ -17,7 +17,7 @@ function Buttons({
   generateBlank
 }) {
   useEffect(() => {
-    console.log(graph.bfsAdjTime);
+    console.log(graph);
   }, [graph.adjStack, graph.bfsAdjTime]);
 
   return (
@@ -68,25 +68,41 @@ function Buttons({
         <button onClick={() => dijkstra(graph, setGraph)}>Dijkstra</button>
         <button onClick={() => bfs(graph, setGraph)}>BFS</button>
       </div>
-      {graph.bfsAdjTime ||
-      graph.bfsEdgeTime ||
-      graph.dijkstraAdjTime ||
-      graph.dijkstraEdgeTime ? (
-        <div>
-          <div className="sidetext">Timing</div>
-          <br />
-          <div className="listtext">BFS Adjacency List Time (ms):</div>
-          <div className="listtext">{graph.bfsAdjTime}</div>
-          <br />
-          <div className="listtext">BFS Edge List Time (ms):</div>
-          <div className="listtext">{graph.bfsEdgeTime}</div>
-          <br />
-          <div className="listtext">Dijkstra Adjacency List Time (ms):</div>
-          <div className="listtext">{graph.dijkstraAdjTime}</div>
-          <br />
-          <div className="listtext">Dijkstra Edge List Time (ms):</div>
-          <div className="listtext">{graph.dijkstraEdgeTime}</div>
-        </div>
+
+      <div className="sidetext">Timing</div>
+      <br />
+      <div className="subtext">BFS Algorithm</div>
+      <div className="listtext">Path Length:</div>
+      {graph.bfsLength ? <div className="listtext">{graph.bfsLength}</div> : ""}
+      <div className="listtext">Adjacency List Time (ms):</div>
+      {graph.bfsAdjTime ? (
+        <div className="listtext">{graph.bfsAdjTime}</div>
+      ) : (
+        ""
+      )}
+      <div className="listtext">Edge List Time (ms):</div>
+      {graph.bfsEdgeTime ? (
+        <div className="listtext">{graph.bfsEdgeTime}</div>
+      ) : (
+        ""
+      )}
+      <br />
+      <div className="subtext">Dijkstra's Algorithm</div>
+      <div className="listtext">Path Length:</div>
+      {graph.dijkstraLength ? (
+        <div className="listtext">{graph.dijkstraLength}</div>
+      ) : (
+        ""
+      )}
+      <div className="listtext">Adjacency List Time (ms):</div>
+      {graph.dijkstraAdjTime ? (
+        <div className="listtext">{graph.dijkstraAdjTime}</div>
+      ) : (
+        ""
+      )}
+      <div className="listtext">Edge List Time (ms):</div>
+      {graph.dijkstraEdgeTime ? (
+        <div className="listtext">{graph.dijkstraEdgeTime}</div>
       ) : (
         ""
       )}
