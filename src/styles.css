@@ -1,15 +1,83 @@
+html,
+body,
+#app,
+#app > div {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
+  background-color: #f0f0f0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .dual {
   display: flex;
-  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.maze {
+  margin: 20px;
 }
 
-.Buttons {
+.mazeBorder {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background-color: white;
+  box-shadow: 5px 10px 8px #888888;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -1px;
+}
+
+.Side {
   margin: 20px;
+  padding: 20px;
+  width: 260px;
+  background: rgb(251, 58, 6);
+  background: linear-gradient(
+    200deg,
+    rgba(251, 58, 6, 1) 0%,
+    rgba(250, 70, 22, 1) 50%,
+    rgba(249, 81, 36, 1) 100%
+  );
+  border: solid 4px black;
+  border-radius: 8px;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+button {
+  background: rgb(0, 33, 165);
+  background: linear-gradient(
+    200deg,
+    rgba(0, 33, 165, 1) 0%,
+    rgba(0, 51, 255, 1) 100%
+  );
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+    sans-serif;
+  padding: 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
 }
 
 .unselectable {
@@ -18,4 +86,31 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.sidetext {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+    sans-serif;
+  color: white;
+}
+
+.subtext {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+    sans-serif;
+  color: white;
+}
+
+.listtext {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+    sans-serif;
+  color: white;
 }

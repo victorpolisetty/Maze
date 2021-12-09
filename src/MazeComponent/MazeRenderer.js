@@ -8,17 +8,13 @@ function MazeRenderer({
   edit,
   setMouseType
 }) {
-  let container = {
-    display: "flex",
-    flexWrap: "wrap",
-    alignContent: "flex-start",
-    border: edit ? "solid 4px red" : "solid 4px black"
-  };
+  let container = {};
   container.width = sizePx + "px";
   container.height = sizePx + "px";
+  container.border = edit ? "solid 4px red" : "solid 4px black";
 
   return (
-    <div style={container}>
+    <div style={container} className="mazeBorder">
       {arrMaze.map((cell) => (
         <Cell
           key={cell.index}

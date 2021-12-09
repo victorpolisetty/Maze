@@ -119,7 +119,9 @@ export default function bfs(graph, setGraph) {
   bfsEdgeList(graph, setGraph);
   var endTimeEdge = performance.now();
 
-  console.log(
-    "MS: " + [endTimeAdj - startTimeAdj, endTimeEdge - startTimeEdge]
-  );
+  setGraph({
+    ...graph,
+    bfsAdjTime: endTimeAdj - startTimeAdj,
+    bfsEdgeTime: endTimeEdge - startTimeEdge
+  });
 }

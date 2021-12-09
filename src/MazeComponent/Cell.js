@@ -9,27 +9,13 @@ function Cell({ label, cell, edit, setCellNum, setMouseType, size }) {
     boxShadow: s.slice(0, -2),
     height: size + 2 + "px",
     width: size + 2 + "px",
-    margin: "-1px",
     backgroundColor: cell.color,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: 10
-  };
-  let debug = {
-    boxShadow: s.slice(0, -2),
-    height: size + -2 + "px",
-    width: size + -2 + "px",
-    margin: "1px",
-    backgroundColor: cell.color,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: 10
+    fontSize: size / 3
   };
   return (
     <div
       style={test}
+      className="cell unselectable"
       onPointerMoveCapture={(e) => {
         if (e.pressure > 0 && edit) {
           setCellNum(cell.index);
@@ -39,7 +25,6 @@ function Cell({ label, cell, edit, setCellNum, setMouseType, size }) {
       onContextMenu={(e) => {
         e.preventDefault();
       }}
-      className="unselectable"
     >
       {label ? cell.index : ""}
     </div>

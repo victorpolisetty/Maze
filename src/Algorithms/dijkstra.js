@@ -108,6 +108,7 @@ function dijkstraEdgeList(graph, setGraph) {
     }
   }
 
+  //construct path
   let end = size - 1;
   let cur = end;
   let path = [];
@@ -127,7 +128,9 @@ export default function dijkstra(graph, setGraph) {
   dijkstraEdgeList(graph, setGraph);
   var endTimeEdge = performance.now();
 
-  console.log(
-    "MS: " + [endTimeAdj - startTimeAdj, endTimeEdge - startTimeEdge]
-  );
+  setGraph({
+    ...graph,
+    dijkstraAdjTime: endTimeAdj - startTimeAdj,
+    dijkstraEdgeTime: endTimeEdge - startTimeEdge
+  });
 }

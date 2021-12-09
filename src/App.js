@@ -1,23 +1,33 @@
 import { useEffect, useState } from "react";
 
-import MazeComponent from "./MazeComponent";
-import Buttons from "./Buttons";
+import MazeComponent from "./Components/MazeComponent";
+import Buttons from "./Components/Buttons";
+import Info from "./Components/Info";
+import useWindowDimensions from "./useWindowDimensions";
+import Title from "./Components/Title";
 import {
   generateMaze,
   generateBlankMaze,
   mazeAdjacencyListBuilder,
   mazeEdgeListBuilder
-} from "./newMaze";
-import Gators from "./Gators";
+} from "./MazeComponent/newMaze";
 
 import "./styles.css";
 
 export default function App() {
-  const [input, setInput] = useState(9);
+  const [input, setInput] = useState(16);
   const [label, toggleLabel] = useState(false);
   const [edit, toggleEdit] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const { height, width } = useWindowDimensions();
+
+  const [graph, setGraph] = useState(generateGraph(input));
+  useEffect(() => {
+    if (!loading) setGraph(generateGraph(input));
+    setLoading(false);
+  }, [input]);
 
   function generateGraph(input) {
     let baseGraph = {};
@@ -39,52 +49,35 @@ export default function App() {
     return baseGraph;
   }
 
-  const [graph, setGraph] = useState(generateGraph(input));
-  useEffect(() => {
-    if (!loading) setGraph(generateGraph(input));
-    setLoading(false);
-  }, [input]);
-
-  //make edges of corners
-
   return (
     <div className="App">
-      <h2>Maze!</h2>
+      <Title />
       <div className="dual">
         <div>
-          <MazeComponent sizePx={400} graph={graph} label={label} edit={edit} />
-          <label>Maze Size:</label>
-          <input
-            value={input}
-            type="number"
-            min="1"
-            max="50"
-            onInput={(e) => {
-              if (parseInt(e.target.value, 10) > 50) {
-                e.target.value = 50;
-              }
-              setInput(parseInt(e.target.value, 10) || "");
-            }}
+          <Info sizePx={width * 0.4} />
+        </div>
+        <div className="maze">
+          <MazeComponent
+            sizePx={width * 0.4}
+            graph={graph}
+            label={label}
+            edit={edit}
           />
-          <button onClick={() => toggleLabel(!label)}>Show Numbers</button>
         </div>
         <div>
-          <div>
-            <button
-              onClick={() => {
-                setGraph(JSON.parse(JSON.stringify(Gators)));
-                setLoading(true);
-                setInput(Gators.dim);
-              }}
-            >
-              Gator Maze
-            </button>
-            <button onClick={() => setGraph(generateBlank(input))}>
-              Blank Maze
-            </button>
-            <button onClick={() => toggleEdit(!edit)}>Edit Maze</button>
-          </div>
-          <Buttons graph={graph} setGraph={setGraph} />
+          <Buttons
+            sizePx={width * 0.4}
+            graph={graph}
+            input={input}
+            edit={edit}
+            label={label}
+            setGraph={setGraph}
+            setLoading={setLoading}
+            setInput={setInput}
+            toggleEdit={toggleEdit}
+            toggleLabel={toggleLabel}
+            generateBlank={generateBlank}
+          />
         </div>
       </div>
     </div>

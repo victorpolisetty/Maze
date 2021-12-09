@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import MazeRenderer from "./MazeComponent/MazeRenderer.js";
+import MazeRenderer from "../MazeComponent/MazeRenderer.js";
 
 function createArrAdjMaze(adjList, dim, adjStack) {
   var numVerts = dim * dim;
@@ -14,7 +14,7 @@ function createArrAdjMaze(adjList, dim, adjStack) {
     arrMaze[i].bottom = adjList[i].includes(i + dim);
     arrMaze[i].left = adjList[i].includes(i - 1);
     if (adjStack.length > 0)
-      arrMaze[i].color = adjStack[0].includes(i) ? "red" : "white";
+      arrMaze[i].color = adjStack[0].includes(i) ? "#046a38" : "";
   }
   return arrMaze;
 }
