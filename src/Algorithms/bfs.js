@@ -123,6 +123,7 @@ export default function bfs(graph, setGraph) {
     ...graph,
     bfsAdjTime: endTimeAdj - startTimeAdj,
     bfsEdgeTime: endTimeEdge - startTimeEdge,
-    bfsLength: graph.adjStack[0].length
+    bfsLength:
+      graph.adjStack.length > 0 ? graph.adjStack[0].length : "Not Solvable"
   });
 }

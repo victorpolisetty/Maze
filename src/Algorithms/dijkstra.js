@@ -55,7 +55,7 @@ function dijkstraAdjList(graph, setGraph) {
     path.push(cur);
     cur = prev[cur];
   }
-  push(path);
+  if (path.length > 1) push(path);
 }
 
 function dijkstraEdgeList(graph, setGraph) {
@@ -116,7 +116,7 @@ function dijkstraEdgeList(graph, setGraph) {
     path.push(cur);
     cur = prev[cur];
   }
-  push(path);
+  if (path.length > 1) push(path);
 }
 
 export default function dijkstra(graph, setGraph) {
@@ -132,6 +132,7 @@ export default function dijkstra(graph, setGraph) {
     ...graph,
     dijkstraAdjTime: endTimeAdj - startTimeAdj,
     dijkstraEdgeTime: endTimeEdge - startTimeEdge,
-    dijkstraLength: graph.adjStack[0].length
+    dijkstraLength:
+      graph.adjStack.length > 0 ? graph.adjStack[0].length : "Not Solvable"
   });
 }
