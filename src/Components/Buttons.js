@@ -72,8 +72,9 @@ function Buttons({
       <div className="sidetext">Timing</div>
       <br />
       <div className="subtext">BFS Algorithm</div>
-      <div className="listtext">Path Length:</div>
-      {graph.bfsLength ? <div className="listtext">{graph.bfsLength}</div> : ""}
+      <div className="listtext">
+        Path Length: {graph.bfsLength ? graph.bfsLength : ""}
+      </div>
       <div className="listtext">Adjacency List Time (ms):</div>
       {graph.bfsAdjTime ? (
         <div className="listtext">{graph.bfsAdjTime}</div>
@@ -88,12 +89,10 @@ function Buttons({
       )}
       <br />
       <div className="subtext">Dijkstra's Algorithm</div>
-      <div className="listtext">Path Length:</div>
-      {graph.dijkstraLength ? (
-        <div className="listtext">{graph.dijkstraLength}</div>
-      ) : (
-        ""
-      )}
+      <div className="listtext">
+        Path Length: {graph.dijkstraLength ? graph.dijkstraLength : ""}
+      </div>
+
       <div className="listtext">Adjacency List Time (ms):</div>
       {graph.dijkstraAdjTime ? (
         <div className="listtext">{graph.dijkstraAdjTime}</div>
